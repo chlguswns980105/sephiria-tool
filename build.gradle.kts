@@ -1,21 +1,26 @@
 plugins {
     kotlin("jvm") version "1.9.23"
+    id("org.jetbrains.compose") version "1.7.3"
 }
 
-group = "com.hyeonjunchoi.timer"
-version = "1.0-SNAPSHOT"
+group = "com.hyeonjunchoi.sephiria"
+version = "1.0"
 
 repositories {
+    google()
     mavenCentral()
 }
 
 dependencies {
-    testImplementation(kotlin("test"))
+    implementation(compose.desktop.currentOs)
 }
 
-tasks.test {
-    useJUnitPlatform()
-}
 kotlin {
     jvmToolchain(17)
+}
+
+compose.desktop {
+    application {
+        mainClass = "com.hyeonjunchoi.sephiria.MainKt"
+    }
 }
